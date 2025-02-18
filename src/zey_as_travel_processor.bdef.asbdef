@@ -1,0 +1,24 @@
+projection;
+strict ( 2 );
+define behavior for ZEY_AS_TRAVEL_PROCESSOR alias Travel
+{
+ use action copyTravel;
+ use create;
+ use update;
+ use delete;
+ use association _Booking { create; }
+}
+define behavior for ZEY_AS_BOOKING_PROCESSOR alias Booking
+{
+ use update;
+ use delete;
+ use association _Travel;
+ use association _BookingSupplement { create; }
+}
+define behavior for ZEY_AS_BOOKING_SUPPL_PROCESSOR alias BookingSuppl
+{
+ use update;
+ use delete;
+ use association _Travel;
+ use association _Booking;
+}
